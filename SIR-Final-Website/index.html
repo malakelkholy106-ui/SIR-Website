@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>سِرّ — SIR | Every item has a story.</title>
+<meta name="description" content="سِرّ — SIR. A quiet fashion house from Port Said.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<div class="grain"></div>
+<header class="nav">
+<a class="brand" href="#home"><span class="arabic-logo">سِرّ</span><span class="brand-en">SIR</span></a>
+<nav><a href="#shop">SHOP</a><a href="#story">STORY</a><a href="#lookbook">LOOKBOOK</a></nav>
+<div class="nav-actions"><button class="icon-btn" id="openSearch" aria-label="Search">⌕</button><button class="bag-btn" id="openCart">BAG <span id="bagCount">0</span></button></div>
+</header>
+
+<aside class="side-rail" aria-label="SIR sections">
+<a href="#shop"><span>01</span><b>SHOP</b></a><a href="#story"><span>02</span><b>STORY</b></a><a href="#lookbook"><span>03</span><b>LOOKBOOK</b></a>
+</aside>
+
+<main>
+<section id="home" class="hero" aria-label="SIR campaign">
+  <div class="hero-motion" id="heroMotion">
+    <img class="hero-image" src="assets/hero.png" alt="SIR campaign">
+    <div class="hero-vignette"></div>
+    <div class="hero-light"></div>
+    <div class="hero-dust"></div>
+  </div>
+  <div class="hero-overlay"></div>
+<div class="hero-copy"><div class="eyebrow">SIR — سِرّ</div><h1>Every item<br><em>has a story.</em></h1><p class="hero-arabic">كُلُّ قِطْعَةٍ لَهَا حِكَايَةٌ.</p><a class="outline-btn" href="#shop">EXPLORE THE COLLECTION <span>↗</span></a></div>
+<div class="hero-meta"><span>01 / 07</span><span>PORT SAID — EGYPT</span><span>SCROLL TO ENTER ↓</span></div><div class="hero-motion-label">SIR / MOVING IMAGE</div></section>
+
+<section class="intro-strip"><a href="#shop"><span>THE FIRST DROP</span><small>SHOP THE COLLECTION</small></a><a href="#story"><span>THE HOUSE</span><small>THE IDEA BEHIND SIR</small></a><a href="#lookbook"><span>THE WORLD</span><small>LOOKBOOK &amp; CODES</small></a></section>
+
+<section id="shop" class="shop section-pad"><div class="section-head"><div><span class="kicker">THE COLLECTION</span><h2>Seven pieces.<br><em>Seven stories.</em></h2></div><p>Designed to move between identities — mostly unisex, with selected women’s pieces. Each item carries a code, a point of view, and a story.</p></div>
+<div class="shop-tools"><div class="filters"><button class="filter active" data-filter="all">ALL</button><button class="filter" data-filter="unisex">UNISEX</button><button class="filter" data-filter="women">WOMEN'S</button><button class="filter" data-filter="limited">LIMITED</button></div><span class="collection-count" id="collectionCount">07 PIECES</span></div>
+<div id="productGrid" class="product-grid"></div></section>
+
+<section id="lookbook" class="lookbook section-pad"><div class="section-head"><div><span class="kicker">THE WORLD</span><h2>Seen in the<br><em>same world.</em></h2></div><p>Warm stone, dark leather, old architecture and a quiet horse mark the visual language of SIR.</p></div>
+<div class="lookbook-manifesto"><div class="horse-mark">♞</div><div class="lookbook-mark">سِرّ</div><div class="lookbook-copy"><span>PORT SAID — EGYPT</span><h3>Quiet form.<br><em>Strong character.</em></h3><p>“Style is not a statement. It is a language.”</p><div class="lookbook-quote">“What you wear becomes part of the story you tell.”</div><div class="lookbook-codes"><span>01 — INDIGO</span><span>02 — ECLIPSE</span><span>03 — ROUGE</span><span>04 — RÊVE</span><span>05 — RITUAL</span><span>06 — OFFSET</span><span>07 — ECRU</span></div></div></div></section>
+
+<section id="story" class="story section-pad"><div class="story-card"><span class="kicker">THE HOUSE</span><h2>Quiet detail.<br><em>Strong presence.</em></h2><p>SIR is built around contrast: structured silhouettes, tactile surfaces, restrained color, and details that reveal themselves slowly. The collection is designed in Port Said for people who do not dress for permission.</p><p class="arabic-story">سِرّ — فِكرَةٌ تُرتَدَى، لا شَكلٌ يُفرَض.</p><div class="story-grid"><div><span>01</span><b>FORM</b><small>Structured silhouettes</small></div><div><span>02</span><b>TEXTURE</b><small>Leather, denim &amp; textile</small></div><div><span>03</span><b>ATTITUDE</b><small>Quiet, never invisible</small></div></div><div class="story-sign">سِرّ</div></div></section>
+</main>
+<footer><div><span class="arabic-logo">سِرّ</span><span>SIR</span></div><p>Port Said, Egypt · 2026</p><p>Every item has a story.</p><a class="admin-link" href="admin.html" aria-label="Admin dashboard">ADMIN ↗</a></footer>
+
+<div id="searchModal" class="modal" aria-hidden="true"><div class="search-panel"><button class="close" id="closeSearch">×</button><span class="kicker">SEARCH SIR</span><input id="searchInput" autofocus placeholder="Search a piece, code or category…"><div id="searchResults"></div></div></div>
+<div id="cartDrawer" class="drawer" aria-hidden="true"><div class="drawer-panel"><button class="close" id="closeCart">×</button><div class="drawer-top"><span class="kicker">YOUR BAG</span><h2>Cart <span id="drawerCount">0</span></h2></div><div id="cartItems"></div><div class="cart-bottom"><div><span>SUBTOTAL</span><strong id="subtotal">EGP 0</strong></div><button class="primary" id="checkoutBtn">CHECKOUT <span>→</span></button></div></div></div>
+
+<div id="productModal" class="modal" aria-hidden="true"><div class="modal-panel"><button class="close" id="closeProduct">×</button><div class="modal-image"><img id="modalImg"><div class="tilt-orbit">03D</div><button class="modal-heart" id="modalWish">♡</button></div><div class="modal-info"><div class="modal-topline"><span id="modalCode" class="code"></span><span id="modalLimited" class="limited-note"></span></div><h2 id="modalName"></h2><p id="modalDesc"></p><div class="modal-row"><strong id="modalPrice"></strong><span id="modalColor"></span></div><div class="item-story"><span>THE STORY</span><p id="modalStory"></p></div><div class="option-row"><label>SIZE<select id="modalSize"><option>S</option><option>M</option><option>L</option><option>XL</option></select></label><label>QTY<div class="qty-picker"><button id="qtyMinus">−</button><span id="modalQty">1</span><button id="qtyPlus">+</button></div></label></div><div class="modal-actions"><button class="primary" id="modalAdd">ADD TO BAG <span>+</span></button><button class="secondary" id="modalBuy">BUY IT NOW <span>→</span></button></div><div class="product-notes"><span>FREE SIZE EXCHANGE</span><span>SECURE CHECKOUT</span><span>CODED PIECE</span></div></div></div></div>
+
+<div id="checkoutModal" class="modal" aria-hidden="true"><div class="checkout-panel"><button class="close" id="closeCheckout">×</button><div class="checkout-head"><span class="kicker">SIR CHECKOUT</span><h2>Complete your order.</h2><div class="steps"><span class="step active">01 CART</span><span class="step active">02 DETAILS</span><span class="step active">03 PAYMENT</span></div></div><form id="checkoutForm"><div class="checkout-grid"><div><label>FULL NAME<input required id="customerName" placeholder="Your name"></label><label>PHONE<input required id="customerPhone" type="tel" placeholder="01XXXXXXXXX"></label><label>EMAIL<input id="customerEmail" type="email" placeholder="you@example.com"></label><label>ADDRESS<textarea required id="customerAddress" rows="3" placeholder="Delivery address"></textarea></label><label>PAYMENT METHOD<select id="paymentMethod"><option value="cod">Cash on Delivery</option><option value="instapay">InstaPay</option></select></label><div id="instapayBox" class="payment-box hidden"><b>InstaPay</b><p>Add your transfer reference after payment.</p><input id="paymentRef" placeholder="Transfer reference (optional)"></div></div><aside class="order-summary"><h3>ORDER SUMMARY</h3><div id="checkoutItems"></div><div class="sumline"><span>SUBTOTAL</span><b id="checkoutSubtotal">EGP 0</b></div><div class="sumline"><span>DELIVERY</span><b>Confirmed after order</b></div><div class="sumline total"><span>TOTAL</span><b id="checkoutTotal">EGP 0</b></div><button class="primary" type="submit">PLACE ORDER <span>→</span></button></aside></div></form><div id="successBox" class="success hidden"><div class="success-mark">✓</div><h2>Order prepared.</h2><p>Your order details are ready to send to SIR on WhatsApp.</p><button class="outline-btn" id="successClose">BACK TO SHOP</button></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="supabase-client.js"></script>
+<script src="app.js"></script></body></html>

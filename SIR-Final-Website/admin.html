@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIR — Admin Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-login" id="adminLogin">
+  <div class="admin-login-card">
+    <div class="admin-brand"><span>سِرّ</span><b>SIR</b><small>ADMIN ACCESS</small></div>
+    <p>Sign in to manage products, orders and inventory.</p>
+    <form id="adminLoginForm">
+      <label>EMAIL<input id="adminEmail" type="email" required autocomplete="username"></label>
+      <label>PASSWORD<input id="adminPassword" type="password" required autocomplete="current-password"></label>
+      <button class="gold-btn" type="submit">SIGN IN</button>
+      <div class="login-error" id="loginError"></div>
+    </form>
+  </div>
+</div>
+<div class="admin-shell locked" id="adminShell">
+  <aside class="sidebar" id="sidebar">
+    <div class="admin-brand"><span>سِرّ</span><b>SIR</b><small>ADMIN</small></div>
+    <nav>
+      <button class="side-link active" data-view="dashboard"><i>01</i><span>Dashboard</span></button>
+      <button class="side-link" data-view="products"><i>02</i><span>Products</span></button>
+      <button class="side-link" data-view="orders"><i>03</i><span>Orders</span></button>
+      <button class="side-link" data-view="inventory"><i>04</i><span>Inventory</span></button><button class="side-link" data-view="settings"><i>05</i><span>Settings</span></button>
+    </nav>
+    <div class="side-bottom">
+      <a href="index.html">← Back to Store</a>
+      <span>PORT SAID · 2026</span>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu">☰</button>
+      <div><span class="kicker">SIR / CONTROL ROOM</span><h1 id="pageTitle">Dashboard</h1></div>
+      <div class="top-actions"><span class="live-dot">● LIVE</span><a href="index.html" class="store-link">VIEW STORE ↗</a><button id="adminLogout" class="store-link">LOG OUT</button></div>
+    </header>
+
+    <section class="view active" id="view-dashboard">
+      <div class="welcome"><div><span class="kicker">THE HOUSE</span><h2>Quiet control.<br><em>Clear decisions.</em></h2></div><p>Manage the SIR collection, live orders, stock and storefront settings from one place.</p></div>
+      <div class="stat-grid">
+        <article class="stat"><span>PRODUCTS</span><strong id="statProducts">07</strong><small>in collection</small></article>
+        <article class="stat"><span>LIMITED</span><strong id="statLimited">02</strong><small>limited pieces</small></article>
+        <article class="stat"><span>ORDERS</span><strong id="statOrders">00</strong><small>from database</small></article>
+        <article class="stat"><span>REVENUE</span><strong id="statRevenue">EGP 0</strong><small>from database</small></article>
+      </div>
+      <div class="dash-grid">
+        <article class="panel recent-panel"><div class="panel-head"><div><span class="kicker">LATEST</span><h3>Recent orders</h3></div><button class="text-btn" data-go="orders">VIEW ALL →</button></div><div id="recentOrders"></div></article>
+        <article class="panel quick-panel"><div class="panel-head"><div><span class="kicker">SHORTCUTS</span><h3>Quick actions</h3></div></div><button class="quick" data-go="products"><b>+</b><span>Add a product<small>Create a new SIR piece</small></span>→</button><button class="quick" data-go="orders"><b>↗</b><span>Review orders<small>Update order status</small></span>→</button><button class="quick" data-go="settings"><b>⚙</b><span>Store settings<small>WhatsApp & payment</small></span>→</button></article>
+      </div>
+    </section>
+
+    <section class="view" id="view-products">
+      <div class="section-toolbar"><div><span class="kicker">COLLECTION / 07</span><h2>Products</h2></div><button class="gold-btn" id="addProduct">+ ADD PRODUCT</button></div>
+      <div class="product-admin-list" id="productAdminList"></div>
+    </section>
+
+    <section class="view" id="view-orders">
+      <div class="section-toolbar"><div><span class="kicker">CUSTOMER ACTIVITY</span><h2>Orders</h2></div><div class="orders-tools"><input id="orderSearch" placeholder="Search orders / customer"><select id="orderFilter"><option value="all">All statuses</option><option>New</option><option>Confirmed</option><option>Preparing</option><option>Shipped</option><option>Completed</option><option>Cancelled</option></select><button class="export-btn" id="exportOrders">EXPORT CSV</button><button class="outline-dark" id="clearOrders">CLEAR SAVED ORDERS</button></div></div>
+      <div class="orders-note">Orders are stored in Supabase. WhatsApp still handles the actual conversation and final message sending.</div>
+      <div class="order-list" id="orderList"></div>
+    </section>
+
+    <section class="view" id="view-inventory">
+      <div class="section-toolbar"><div><span class="kicker">STOCK CONTROL</span><h2>Inventory</h2></div><span class="orders-note">Stock tracking is optional per product.</span></div>
+      <div class="product-admin-list" id="inventoryList"></div>
+    </section>
+
+    <section class="view" id="view-settings">
+      <div class="section-toolbar"><div><span class="kicker">HOUSE SETTINGS</span><h2>Settings</h2></div><button class="gold-btn" id="saveSettings">SAVE SETTINGS</button></div>
+      <div class="settings-grid">
+        <article class="panel form-panel"><span class="kicker">CONTACT</span><h3>Order destination</h3>
+          <label>WHATSAPP NUMBER<input id="setWhatsapp" placeholder="201204577313"></label>
+          <label>INSTAPAY HANDLE<input id="setInstapay" placeholder="your-handle"></label>
+          <label>STORE EMAIL<input id="setEmail" type="email" placeholder="hello@sir.example"></label>
+        </article>
+        <article class="panel form-panel"><span class="kicker">BRAND</span><h3>Store language</h3>
+          <label>ARABIC LINE<input id="setArabic" value="كُلُّ قِطْعَةٍ لَهَا حِكَايَةٌ."></label>
+          <label>FOOTER LINE<input id="setFooter" value="Every item has a story."></label>
+          <label>ESTABLISHED<input id="setEstablished" value="2026 — Port Said, Egypt"></label>
+        </article>
+      </div>
+      <div class="danger panel"><div><span class="kicker">LOCAL DATA</span><h3>Reset storefront catalog</h3><p>Restores the original seven SIR products on this browser.</p></div><button class="outline-dark" id="resetProducts">RESET PRODUCTS</button></div>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal" id="productEditor" aria-hidden="true">
+  <div class="editor">
+    <button class="modal-close" id="closeEditor">×</button>
+    <div class="editor-head"><span class="kicker">SIR / PRODUCT</span><h2 id="editorTitle">Add product</h2></div>
+    <form id="productForm">
+      <input type="hidden" id="editIndex">
+      <div class="editor-grid">
+        <div class="image-field"><div class="preview" id="imagePreview"><span>IMAGE</span></div><label class="upload">UPLOAD IMAGE<input id="pImageFile" type="file" accept="image/*"></label></div>
+        <div class="form-fields">
+          <div class="two"><label>CODE<input id="pId" required></label><label>PRICE (EGP)<input id="pPrice" type="number" min="0" required></label></div>
+          <label>NAME<input id="pName" required></label>
+          <div class="two"><label>CATEGORY<select id="pCategory"><option value="unisex">Unisex</option><option value="women">Women's</option></select></label><label>COLOR / MATERIAL<input id="pColor"></label></div>
+          <label>DESCRIPTION<textarea id="pDesc" rows="3"></textarea></label>
+          <label>STORY<textarea id="pStory" rows="3"></textarea></label>
+          <div class="two"><label>IMAGE PATH / URL<input id="pImg"></label><label>LIMITED<select id="pLimited"><option value="false">No</option><option value="true">Yes</option></select></label></div>
+          <label>LIMITED NOTE<input id="pNote" placeholder="LIMITED — WHEN IT’S GONE, IT’S GONE."></label>
+          <div class="inventory-box"><div class="inventory-head"><b>INVENTORY</b><label><input id="pTrackStock" type="checkbox"> TRACK STOCK</label></div><div class="stock-grid"><label>S<input id="stockS" type="number" min="0" value="0"></label><label>M<input id="stockM" type="number" min="0" value="0"></label><label>L<input id="stockL" type="number" min="0" value="0"></label><label>XL<input id="stockXL" type="number" min="0" value="0"></label></div><small>Leave tracking off until you know the real stock quantities.</small></div>
+        </div>
+      </div>
+      <div class="editor-actions"><button type="button" class="outline-dark" id="cancelEditor">CANCEL</button><button type="submit" class="gold-btn">SAVE PRODUCT</button></div>
+    </form>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="supabase-client.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
