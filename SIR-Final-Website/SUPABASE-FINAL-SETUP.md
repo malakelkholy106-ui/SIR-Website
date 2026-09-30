@@ -41,5 +41,12 @@ Then open `admin.html`. It will show the SIR Admin sign-in screen.
 The browser only uses the Supabase Publishable key. Never put a Supabase secret/service_role key in `supabase-config.js` or any file deployed to the public website.
 
 
-## Final Admin Security
-Run `supabase-secure-admin.sql` once. Replace `YOUR_ADMIN_EMAIL_HERE` with the Admin login email before running. This restricts product/inventory/order management to users explicitly listed in `admin_users`.
+## 5) Required before public launch: lock down Admin access
+
+The earlier `supabase-admin-rls.sql` grants management access to every authenticated account. Before making the storefront public:
+
+1. Confirm the Admin account exists in Supabase Authentication → Users.
+2. In SQL Editor, run the entire `supabase-secure-admin.sql` file after replacing `YOUR_ADMIN_EMAIL_HERE` with that Admin account's email. This restricts product, inventory, and order management to accounts listed in `admin_users` and refreshes the API schema cache.
+3. In Supabase Authentication settings, disable new user sign-ups.
+
+Do not launch while the broad authenticated policies are still active.

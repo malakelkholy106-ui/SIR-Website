@@ -41,6 +41,12 @@ drop policy if exists "Admin authenticated order access" on public.orders;
 drop policy if exists "Admin authenticated order updates" on public.orders;
 drop policy if exists "Admin authenticated order deletes" on public.orders;
 drop policy if exists "Admin authenticated order item access" on public.order_items;
+drop policy if exists "SIR admin manages products" on public.products;
+drop policy if exists "SIR admin manages inventory" on public.inventory;
+drop policy if exists "SIR admin reads orders" on public.orders;
+drop policy if exists "SIR admin updates orders" on public.orders;
+drop policy if exists "SIR admin deletes orders" on public.orders;
+drop policy if exists "SIR admin reads order items" on public.order_items;
 
 create policy "SIR admin manages products"
 on public.products for all to authenticated
@@ -67,3 +73,5 @@ on public.order_items for select to authenticated
 using (public.is_sir_admin());
 
 -- Keep customer order creation through the secure RPC.
+
+notify pgrst, 'reload schema';

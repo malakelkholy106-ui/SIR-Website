@@ -41,7 +41,17 @@ async function initAdminAuth(){
    return;
  }
  const show=()=>{shell.classList.add('locked');login.classList.remove('hidden')};
- const enter=()=>{shell.classList.remove('locked');login.classList.add('hidden');loadAdminFromSupabase()};
+ const enter=async()=>{
+   err.textContent='';
+   const {data,error}=await window.sirSupabase.rpc('is_sir_admin');
+   if(error||!data){
+     await window.sirSupabase.auth.signOut();
+     show();
+     err.textContent=error?`Admin verification failed: ${error.message}`:'This account is not authorized for admin access.';
+     return;
+   }
+   shell.classList.remove('locked');login.classList.add('hidden');loadAdminFromSupabase();
+ };
  const {data}=await window.sirSupabase.auth.getSession();
  if(data.session) enter(); else show();
  form.onsubmit=async e=>{
