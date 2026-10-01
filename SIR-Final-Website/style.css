@@ -124,22 +124,33 @@ animation:sirDust 18s linear infinite;pointer-events:none}
 }
 }
 
-/* MOBILE PRODUCT MODAL — SMOOTH SCROLL */
+/* MOBILE PRODUCT MODAL — IMAGE SCROLLS AWAY */
 @media (max-width: 600px) {
 
+  .modal {
+    padding: 0 !important;
+    align-items: flex-start !important;
+  }
+
   .modal-panel {
+    width: 100% !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
     display: block !important;
+    -webkit-overflow-scrolling: touch;
   }
 
   .modal-image {
-    height: 48vh !important;
-    min-height: 48vh !important;
+    width: 100% !important;
+    height: 62vh !important;
+    min-height: 62vh !important;
+    flex-shrink: 0 !important;
   }
 
   .modal-info {
     overflow: visible !important;
-    padding: 30px 22px 40px !important;
+    padding: 30px 22px 50px !important;
   }
 }
