@@ -123,3 +123,17 @@ animation:sirDust 18s linear infinite;pointer-events:none}
   display:none !important;
 }
 }
+/* MOBILE PRODUCT MODAL FIX */
+@media (max-width: 600px) {
+  .modal-image {
+    height: 38vh !important;
+    min-height: 38vh !important;
+    flex-shrink: 0 !important;
+  }
+
+  .modal-info {
+    flex: 1 !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+  }
+}
